@@ -25,7 +25,7 @@ routes.post("/login", async (req, res) => {
       })
     )
     res
-      .status(200)
+      .status(200)  //OK
       .send({
         "token": token
       })

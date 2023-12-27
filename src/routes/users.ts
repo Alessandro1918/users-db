@@ -2,16 +2,17 @@ import { Router } from "express"
 
 const routes = Router()
 
+import { validateAccessToken } from "../lib/jwt/jwt"
 import { prisma } from "../lib/prisma/prisma"
 
 //List all users
-routes.get("/", async (req, res) => {
+routes.get("/", validateAccessToken, async (req, res) => {
   const users = await prisma.user.findMany()
   res.send(users)
 })
 
 //Get one user (by CPF)
-routes.get("/:cpf", async (req, res) => {
+routes.get("/:cpf", validateAccessToken, async (req, res) => {
   const cpf = req.params.cpf
   const user = await prisma.user.findUnique({
     where: {
@@ -22,7 +23,7 @@ routes.get("/:cpf", async (req, res) => {
 })
 
 //Save a new user
-routes.post("/", async (req, res) => {
+routes.post("/", validateAccessToken, async (req, res) => {
   const newUser = {
     cpf: req.body.cpf,
     name: req.body.name,
@@ -43,7 +44,7 @@ routes.post("/", async (req, res) => {
 })
 
 //Update an existing user (by CPF)
-routes.put("/:cpf", async (req, res) => {
+routes.put("/:cpf", validateAccessToken, async (req, res) => {
   const cpf = req.params.cpf
   const updatedUser = {
     name: req.body.name,
@@ -69,7 +70,7 @@ routes.put("/:cpf", async (req, res) => {
 
 //De-activate existing user (by CPF)
 //(Don't really delete it, because it will record when and who removed this user)
-routes.delete("/:cpf", async (req, res) => {
+routes.delete("/:cpf", validateAccessToken, async (req, res) => {
   const cpf = req.params.cpf
   const updatedUser = {
     status: false,
