@@ -4,9 +4,23 @@
 Exercício de backend - Sistema de Cadastro de Usuários.</br>
 Fornecer um cadastro de usuários com todas a operações típicas de operação de banco de dados ([CRUD](https://pt.wikipedia.org/wiki/CRUD)).
 
+<div align="center">
+  <img src="github_assets/swagger.png" alt="routes" title="routes" width="75%"/>
+  <p>Documentação das rotas:
+    <a href="http://localhost:4000/api-docs">
+      http://localhost:4000/api-docs
+    </a>
+  </p>
+</div>
+
 ## 🛠️ Tecnologias
 - [Node.js](https://nodejs.org/en/)
+- [MySQL](https://www.mysql.com)
 - [Prisma](https://www.prisma.io)
+- [Swagger](https://swagger.io)
+
+## 🧊 Cool features
+- Autenticação de usuários com [JWT](https://jwt.io) (rota de login) para uso das rotas autenticadas.
 
 ## 🗂️ Utilização
 
@@ -28,7 +42,9 @@ Fornecer um cadastro de usuários com todas a operações típicas de operação
   $ npm install
 ```
 
-- Criar a instância da base de dados local (arquivo <code>users-db.mwb</code>), pelo terminal ou pelo Workbench.
+- Criar a instância da base de dados MySQL local (arquivo <code>users-db.mwb</code>), pelo seu cliente MySQL (terminal ou Workbench).
+
+- Criar o arquivo <code>.env</code>, de acordo com o arquivo <code>.env.example</code>.
 
 - Acrescentar a string de conexão ao arquivo <code>.env</code>, de acordo com o arquivo <code>.env.example</code>, no padrão:</br>
 <code>DATABASE_URL = “mysql://USER:PASSWORD@HOST:PORT/DATABASE”</code></br>
@@ -48,4 +64,6 @@ Sendo:</br>
 - Rodar o app:
 ```bash
   $ npm run dev
-```     
+```
+
+Consultar a documentação em: [localhost:4000/api-docs](http://localhost:4000/api-docs)
