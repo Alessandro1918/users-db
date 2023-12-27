@@ -67,3 +67,8 @@ Sendo:</br>
 ```
 
 Consultar a documentação em: [localhost:4000/api-docs](http://localhost:4000/api-docs)
+
+## 📋 TODO:
+- Implementar tabela de admins (só 1 usuário cadastrado hardcoded: username "alessandro_1", senha "1234"
+- Tratamento de erro se usuário não for encontrado (rotas get / update / delete)
+- Salvar nome do admin responsável pelo update / delete do usuário
