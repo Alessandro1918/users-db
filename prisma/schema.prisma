@@ -11,8 +11,8 @@ datasource db {
 }
 
 model User {
-  id                   String   @id @default(uuid())
-  cpf                  String   @unique
+  id                   String    @id @default(uuid())
+  cpf                  String    @unique
   name                 String
   date_of_birth        DateTime
   address_street       String
@@ -22,11 +22,11 @@ model User {
   address_city         String
   address_state        String
   address_cep          String
-  status               Boolean  @default(true)
-  created_at           DateTime @default(now())
+  status               Boolean   @default(true)
+  created_at           DateTime  @default(now())
   created_by           String
-  updated_at           DateTime
-  updated_by           String
-  removed_at           DateTime
-  removed_by           String
+  updated_at           DateTime?
+  updated_by           String?
+  removed_at           DateTime?
+  removed_by           String?
 }
