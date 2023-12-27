@@ -1,4 +1,4 @@
-import { Router } from 'express'
+import { Router } from "express"
 
 const routes = Router()
 
@@ -7,7 +7,7 @@ import { prisma } from "../lib/prisma/prisma"
 //List all users
 routes.get("/", async (req, res) => {
   const users = await prisma.user.findMany()
-  res.json(users)
+  res.send(users)
 })
 
 //Get one user (by CPF)
@@ -18,7 +18,7 @@ routes.get("/:cpf", async (req, res) => {
       cpf: cpf
     }
   })
-  res.json(user)
+  res.send(user)
 })
 
 //Save a new user
@@ -39,7 +39,7 @@ routes.post("/", async (req, res) => {
   await prisma.user.create({
     data: newUser
   })
-  res.json(newUser)
+  res.send(newUser)
 })
 
 //Update an existing user (by CPF)
@@ -64,7 +64,7 @@ routes.put("/:cpf", async (req, res) => {
     },
     data: updatedUser
   })
-  res.json(updatedUser)
+  res.send(updatedUser)
 })
 
 //De-activate existing user (by CPF)
@@ -82,7 +82,7 @@ routes.delete("/:cpf", async (req, res) => {
     },
     data: updatedUser
   })
-  res.json(updatedUser)
+  res.send(updatedUser)
 })
 
 export { routes }
