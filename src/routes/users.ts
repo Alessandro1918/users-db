@@ -204,7 +204,7 @@ routes.post("/", validateAccessToken, async (req, res) => {
 
 /**
  * @swagger
- * /users:
+ * /users/{cpf}:
  *   put:
  *     tags: [ Users ]
  *     description: Edit data of an user
@@ -255,7 +255,7 @@ routes.put("/:cpf", validateAccessToken, async (req, res) => {
 
 /**
  * @swagger
- * /users:
+ * /users/{cpf}:
  *   delete:
  *     tags: [ Users ]
  *     description: De-activate existing user, by changing "status" to "false" (don't really delete it, because it will record when and who removed this user).
