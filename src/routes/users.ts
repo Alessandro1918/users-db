@@ -96,11 +96,32 @@ import { prisma } from "../lib/prisma/prisma"
  *               example: "123.456.789-00"
  */
 
-//List all users
-// routes.get("/", validateAccessToken, async (req, res) => {
-//   const users = await prisma.user.findMany()
-//   res.send(users)
-// })
+ /**
+ * @swagger
+ * /users:
+ *   get:
+ *     tags: [ Users ]
+ *     description: Returns a list of all the users
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Users found on the db
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: "#/components/schemas/UserCreate"
+ *       400:
+ *          description: User access token missing or invalid
+ *       401:
+ *          description: User access token expired
+ */
+routes.get("/", validateAccessToken, async (req, res) => {
+  const users = await prisma.user.findMany()
+  res.send(users)
+})
 
  /**
  * @swagger
@@ -122,7 +143,7 @@ import { prisma } from "../lib/prisma/prisma"
  *         content:
  *           application/json:
  *             schema:
- *               $ref: "#/components/schemas/User"
+ *               $ref: "#/components/schemas/UserCreate"
  *       400:
  *          description: User access token missing or invalid
  *       401:
