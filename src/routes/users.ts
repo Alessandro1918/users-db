@@ -25,15 +25,15 @@ import { prisma } from "../lib/prisma/prisma"
  * 
  *   schemas:
  * 
- *     User:
+ *     UserEdit:
  *       properties:
  *         id:
  *           type: string
  *           example: "1"
  *           readOnly: true              # Property not writen on the user request, but available at the response. Hence, readOnly
- *         cpf:
+ *         name:
  *           type: string
- *           example: "123.456.789-00"
+ *           example: "Alessandro"
  *         date_of_birth:
  *           type: string
  *           example: "1970-01-01T00:00:00.000Z"
@@ -86,6 +86,14 @@ import { prisma } from "../lib/prisma/prisma"
  *           type: string
  *           example: "admin"
  *           readOnly: true
+ * 
+ *     UserCreate:
+ *       allOf:
+ *         - $ref: "#/components/schemas/UserEdit"
+ *         - properties:
+ *             cpf:
+ *               type: string
+ *               example: "123.456.789-00"
  */
 
 //List all users
@@ -142,7 +150,7 @@ routes.get("/:cpf", validateAccessToken, async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             $ref: "#/components/schemas/User"
+ *             $ref: "#/components/schemas/UserCreate"
  *     responses:
  *       201:
  *         description: User created on the db
@@ -191,7 +199,7 @@ routes.post("/", validateAccessToken, async (req, res) => {
  *       content:
  *         application/json:
  *           schema:
- *             $ref: "#/components/schemas/User"
+ *             $ref: "#/components/schemas/UserEdit"
  *     responses:
  *       200:
  *         description: User updated on the db
