@@ -25,10 +25,12 @@ const app = express()
 app.use(express.json())
 app.use("/auth", authRoutes)
 app.use("/users", usersRoutes)
-app.use(
-  "/api-docs",        //route to serve the documentation (localhost:4000/api-docs)
-  swaggerUi.serve, 
-  swaggerUi.setup(swaggerDocs)
-)
+if (process.env.SWAGGER_ENV === "DEV") {
+  app.use(
+    "/api-docs",        //route to serve the documentation (localhost:4000/api-docs)
+    swaggerUi.serve, 
+    swaggerUi.setup(swaggerDocs)
+  )
+}
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
