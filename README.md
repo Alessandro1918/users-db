@@ -21,6 +21,7 @@ Fornecer um cadastro de usuários com todas a operações típicas de operação
 
 ## 🧊 Cool features
 - Autenticação de usuários com [JWT](https://jwt.io) (rota de login) para uso das rotas autenticadas.
+- Login compara a senha fornecida com o [hash](https://pt.wikipedia.org/wiki/Função_hash_criptográfica) da senha cadastrada (senhas nunca devem ser salvas em plaintext).
 
 ## 🗂️ Utilização
 
@@ -69,6 +70,6 @@ Sendo:</br>
 Consultar a documentação em: [localhost:4000/api-docs](http://localhost:4000/api-docs)
 
 ## 📋 TODO:
-- Implementar tabela de admins (só 1 usuário cadastrado hardcoded: username "alessandro_1", senha "1234"
-- Tratamento de erro se usuário não for encontrado (rotas get / update / delete)
-- Salvar nome do admin responsável pelo update / delete do usuário
+- Implementar tabela de admins (operadores habilitados a fazer login e manipular os registros de "usuários"). Atualmente só 1 admin cadastrado hardcoded: username "alessandro_1", senha "1234".
+- Tratamento de erro se usuário não for encontrado (rotas get / update / delete).
+- Salvar nome do admin responsável pelo update / delete do usuário.
